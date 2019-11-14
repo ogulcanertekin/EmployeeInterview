@@ -1,0 +1,34 @@
+<form [formGroup]="employeeCreateForm" (ngSubmit)="createEmployee()" class="form-create">
+    <h4 class="mt-2">Create New Employee</h4>
+    <div class="form-group">
+        <input type="text" id="userFirstName" name="userFirstName" formControlName="userFirstName" class="form-control"
+            placeholder="First Name" autofocus>
+        <span class="handle-block"
+            *ngIf="employeeCreateForm.get('userFirstName').hasError('required') && employeeCreateForm.get('userFirstName').touched">
+            FirstName is required !
+        </span>
+    </div>
+    <div class="form-group">
+        <input type="text" id="userLastName" name="userLastName" formControlName="userLastName" class="form-control"
+            placeholder="Last Name">
+        <span class="handle-block"
+            *ngIf="employeeCreateForm.get('userLastName').hasError('required') && employeeCreateForm.get('userLastName').touched">
+            LastName is required !
+        </span>
+    </div>
+    <div class="form-group">
+        <input type="text" id="departmentName" name="departmentName" formControlName="departmentName"
+            class="form-control" placeholder="Department Name">
+        <span class="handle-block"
+            *ngIf="employeeCreateForm.get('departmentName').hasError('required') && employeeCreateForm.get('departmentName').touched">
+            Department Name is required !
+        </span>
+    </div>
+    <button class="btn btn-lg btn-primary btn-block" [disabled]="!employeeCreateForm.valid"
+        type="submit">Create</button>
+
+        <div class="text-center mt-3">
+            <a [routerLink]="['/employees']"><button type="button" class="btn btn-dark mb-4">Go to List Of
+                    Employees</button></a>
+        </div>
+</form>
